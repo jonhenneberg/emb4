@@ -17,12 +17,12 @@ static struct cdev c_dev; 	// Global variable for the character device structure
 static struct class *cl; 	// Global variable for the device class
 
 
-struct gpio_irq_test {
+struct gpio_test {
    u16 irq;
    u16 irq_pin, gpio_pin, led_pin;
 };
 
-static struct gpio_irq_test test_data;
+static struct gpio_test test_data;
 
 
 static int my_open(struct inode *i, struct file *f) {
