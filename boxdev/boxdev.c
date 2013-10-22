@@ -77,14 +77,14 @@ static int __init ofcd_init(void) /* Constructor */
 	return 0;
   
 	/* Cleanup of registers */        
-	err_device_destroy_return:        
-		device_destroy(cl, first);
-	err_class_destroy_return:
-		class_destroy(cl);
-	err_unregister_chrdev_return:
-    	unregister_chrdev_region(first, 1);
-	err_return:
-		return -1;
+err_device_destroy_return:        
+	device_destroy(cl, first);
+err_class_destroy_return:
+	class_destroy(cl);
+err_unregister_chrdev_return:
+	unregister_chrdev_region(first, 1);
+err_return:
+	return -1;
 }
  
 static void __exit ofcd_exit(void) /* Destructor */
