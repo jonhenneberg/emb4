@@ -69,7 +69,7 @@ static int __init ofcd_init(void) /* Constructor */
 	printk(KERN_INFO DRV_NAME " : Registered\n");
 	
 	if (alloc_chrdev_region(&first, 0, 1, "JON") < 0) { goto err_return;	}
-	if ((cl = class_create(THIS_MODULE, "chardrv")) == NULL) { goto err_unregister_chrdev_return; }
+	if ((cl = class_create(THIS_MODULE, "boxdev")) == NULL) { goto err_unregister_chrdev_return; }
 	if (device_create(cl, NULL, first, NULL, "boxdev") == NULL) { goto err_class_destroy_return; }
 	cdev_init(&c_dev, &pugs_fops);
 	if (cdev_add(&c_dev, first, 1) == -1) { goto err_device_destroy_return; }
