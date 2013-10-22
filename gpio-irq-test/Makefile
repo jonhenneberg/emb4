@@ -1,10 +1,7 @@
-# Makefile for compiling Kernel
-# modules on the fly.
-
 obj-m += gpio-irq-test.o
 
 PWD   := $(shell pwd)
-KDIR  := ${PWD}/..
+KDIR  := ${PWD}/../..
 
 all:
 	make -C $(KDIR) SUBDIRS=$(PWD) modules
