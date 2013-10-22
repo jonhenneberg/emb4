@@ -62,7 +62,7 @@ static ssize_t my_write(struct file *f, const char __user *buf, size_t len, loff
 		gpio_set_value(test_data.led_pin, 1); 
 	} else {
 		gpio_set_value(test_data.gpio_pin, 0);
-		gpio_set_value(test_data.led_pin, 1); 
+		gpio_set_value(test_data.led_pin, 0); 
 	}
 
 	return len;
