@@ -79,7 +79,6 @@ static struct file_operations pugs_fops =
  
 static int __init ofcd_init(void) /* Constructor */
 {
-	int err;
 	printk(KERN_INFO DRV_NAME " : Registered\n");
 
 	test_data.irq_pin = 46;
