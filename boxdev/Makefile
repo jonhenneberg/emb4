@@ -1,4 +1,4 @@
-obj-m += ofcd.o
+obj-m += boxdev.o
 
 PWD   := $(shell pwd)
 KDIR  := ${PWD}/../..
