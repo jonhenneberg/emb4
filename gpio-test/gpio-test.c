@@ -22,8 +22,18 @@ struct gpio_test {
    u16 irq_pin, gpio_pin, led_pin;
 };
 
+static int            irq_pin = 46;
+static int            gpio_pin = 38;
+static int            led_pin = 54;
+
+
+
 static struct gpio_test test_data;
 
+
+module_param(led_pin, int, S_IRUGO);
+module_param(gpio_pin, int, S_IRUGO);
+module_param(irq_pin, int, S_IRUGO);
 
 static int my_open(struct inode *i, struct file *f) {
   printk(KERN_INFO DRV_NAME " : Driver: open()\n");
@@ -81,9 +91,10 @@ static int __init ofcd_init(void) /* Constructor */
 {
 	printk(KERN_INFO DRV_NAME " : Registered\n");
 
-	test_data.irq_pin = 46;
-	test_data.gpio_pin = 38;
-	test_data.led_pin = 54;
+	test_data.irq_pin = irq_pin;
+	test_data.gpio_pin = gpio_pin;
+	test_data.led_pin = led_pin;
+
 
 	if (alloc_chrdev_region(&first, 0, 1, "JON") < 0) { goto err_return;	}
 	if ((cl = class_create(THIS_MODULE, "gpio-test")) == NULL) { goto err_unregister_chrdev_return; }
@@ -148,3 +159,4 @@ module_exit(ofcd_exit);
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Jon Henneberg");
 MODULE_DESCRIPTION("GPIO Test");
+
